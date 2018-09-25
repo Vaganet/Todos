@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-app-ui';
-}
+  title = 'todos-ui';
+
+  /*attribut parent*/
+  ShowHideSideBar :boolean =false;
+
+
+  onShowSideBarChange(ShowHideSideBar){
+this.ShowHideSideBar=ShowHideSideBar;
+  }
+  }
+

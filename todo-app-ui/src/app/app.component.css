@@ -1,0 +1,5 @@
+/* Pour faire de la marge a la page en haut et a gauche  pour que l'écriture ne soit pas collée*/
+.body{
+    padding-top: 15px;
+    padding-left: 15px;
+  }
