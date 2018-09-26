@@ -1,5 +1,61 @@
-<ul>
-    <li *ngFor="let todo of todos">
-      {{ todo.id}}, {{ todo.title}}, {{ todo.description}} 
-    </li>
-  </ul>
+<h3>Todos dashboard </h3>
+<div class="container">
+ <div class="row">
+
+  <div class ="col-lg-5">
+   
+    <table >
+      <thead>
+      <th> title</th>
+      </thead>
+	  
+      <tbody>
+        <ul *ngFor="let todo of todos">
+        <li>  <tr> {{ todo.title }}</tr> </li>
+       </ul>
+      </tbody>
+	  
+    </table>
+	
+ </div>
+
+ <div class= "col-lg-7">
+
+    <div class="card">
+	
+        <div class ="card-header" bg-info text-white>
+		
+         Ajouter Todo
+		 
+        </div>
+		
+        <div class="card-body">
+            <form [formGroup] = "todoForm ">
+
+		  <div class ='FormGroup'>
+                 <label>Title</label>
+                      <input type="text" class="form-control" formControlName="title"/> 
+              </div>
+
+              <div class ='FormGroup'>
+                 <label>Description</label>
+                      <input type="text" class="form-control" formControlName="description"/> 
+              </div>
+
+             <div class ='FormGroup'>
+                <label>Assignee</label>
+                      <input type="text" class="form-control" formControlName="assignee"/> 
+             </div>
+             <button class="btn btn-success" [disabled]= "todoForm.prestine || todoForm.invalid">Ajouter</button>
+            
+            </form>
+            
+        </div>
+
+        <div class="card-footer"></div>
+          
+    </div>
+</div>
+
+</div>
+

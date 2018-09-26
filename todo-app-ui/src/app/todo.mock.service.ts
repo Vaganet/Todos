@@ -19,4 +19,18 @@ constructor(){
 public getTODOS() : Todo[] {
     return this.TODOS;
 }
-}
+
+/*
+getUncompletedTodos(): Todo[] {
+    return this.TODOS.filter(todo => !todo.completed);
+  }
+
+getCompletedTodos(): Todo[] {
+    return this.TODOS.filter(todo => todo.completed);
+  }
+*/
+
+
+
+
+  }

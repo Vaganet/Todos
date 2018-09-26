@@ -35,7 +35,19 @@
         padding: 1em 3em;
         background: #A5F883;
         color: #003A61;
-        margin-bottom: 1em;
+        margin-bottom: 3em;
         cursor: pointer;
         
     }
+    
+.todos-panel {
+    padding-top: 10px;
+  }
+  
+  .complete {
+    color: green;
+  }
+  
+  .uncomplete {
+    color: red;
+  }
