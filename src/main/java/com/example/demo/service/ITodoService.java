@@ -10,6 +10,6 @@ public interface ITodoService {
 	List<Todo> getTodos();
 	void addTodo (Todo todo);
 	void updateTodo (Todo todo);
-	void deleteTodo (int id);
+	void deleteTodo (String title);
 	
 }

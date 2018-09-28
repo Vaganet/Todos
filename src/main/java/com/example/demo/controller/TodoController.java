@@ -42,9 +42,9 @@ public void updateTodo (@RequestBody Todo todo){
 	todoService.updateTodo(todo);
 }
 
-@DeleteMapping("/{id}")
-public void deleteTodo (@PathVariable int id){
-	todoService.deleteTodo(id);
+@DeleteMapping("/{title}")
+public void deleteTodo (@PathVariable String title){
+	todoService.deleteTodo(title);
 }
 
 }

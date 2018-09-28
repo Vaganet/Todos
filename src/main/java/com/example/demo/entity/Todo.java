@@ -2,9 +2,9 @@ package com.example.demo.entity;
 
 public class Todo {
 	
-	private int id;
+
 	private String title;
-	private String description;
+	
 	
 	
 
@@ -13,21 +13,13 @@ public class Todo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Todo(int id, String title, String description) {
+	public Todo(String title) {
 		super();
-		this.id = id;
 		this.title = title;
-		this.description = description;
-
+	
 	}
 	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getTitle() {
 		return title;
@@ -37,19 +29,11 @@ public class Todo {
 		this.title = title;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 
@@ -62,10 +46,14 @@ public class Todo {
 		if (getClass() != obj.getClass())
 			return false;
 		Todo other = (Todo) obj;
-		if (id != other.id)
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
 			return false;
 		return true;
 	}
+
 
 
 	
