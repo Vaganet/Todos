@@ -1,0 +1,17 @@
+<div class="row body">
+
+  <div class="col-lg-2" *ngIf='ShowHideSideBar'>   
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="col-lg-10">   
+   <!-- [ShowSideBar]="ShowHideSideBar" pour faire le lien entre la valeur false du pére 'AppComponent' et celle ici du fils -->
+   <app-navbar  [ShowSideBar]="ShowHideSideBar"
+   (ShowSideBarChange)="onShowSideBarChange($event)" > </app-navbar>  
+    <app-content></app-content>
+  </div> 
+
+</div>
+
+
+

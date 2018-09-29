@@ -1,0 +1,95 @@
+<h3>Todos List </h3>
+<div class="container">
+ <div class="row">
+
+  <div class ="col-lg-8">
+   
+    <table class ="table table-hover">
+      <thead>
+      <tr>
+      <th> title</th>
+      <th>
+          <button class=" btn btn-outline-primary" (click)= "operation='add'; initTodo();">Add</button>
+      </th>
+      </tr>
+      </thead>
+    
+      <tbody>
+        <tr *ngFor="let todo of todos">
+        <td> {{ todo.title }}</td>
+        <td>
+          <!--si on clic sur Edit btn opération prend edit si on clic sura remove -->
+            <button class=" btn btn-sm btn-outline-primary" (click)= "operation='edit'; selectedTodo = todo;" >Edit</button>
+         
+            <button class=" btn btn-sm btn-outline-danger" (click)= "operation='remove'; selectedTodo = todo;">  Remove</button>
+        </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+
+      </tfoot>
+    </table>
+	
+ </div>
+
+
+ <div class= "col-lg-4">
+
+    <div class="card">
+        
+            <div class ="card-header" bg-info text-white>
+      <!-- selon le clic sur btn le text se modifie selon l'opération lors du clic   -->
+
+      <!--selon la valeure de l'operation on affiche le header convenue dans card-header 
+                        ? pour dire dire si on click sur btn add on affiche dans le header ajouter Todo-->
+                        {{ operation == 'add' ? 'Ajouter Todo' :
+                        operation == 'edit' ? 'Modifier Todo' :
+                        operation == 'remove' ? 'Supprimer Todo' : ' ' }}
+              
+            </div>
+                
+            <div class="card-body" >
+              <!--ce formulaire ne doit d'afficher que pour l'ajout ou la modif -->
+                <div  *ngIf = "operation == 'add' || operation == 'edit' ">
+                    <form [formGroup] = "todoForm"  >
+        
+                            <div class ='FormGroup' > 
+                             <label>Title</label>
+                              <input type="text" class="form-control" formControlName="title" [(ngModel)]="selectedTodo.title" />  
+                            </div>
+
+                            <div class="alert alert-danger" *ngIf="todoForm.controls['title'].invalid
+                            && (todoForm.controls['title'].touched || todoForm.controls['title'].dirty) ">
+
+                             title est obligatoire !!!!
+                            </div>
+
+                            <button class="btn btn-success" [disabled]= "todoForm.prestine || todoForm.invalid"
+                            (click) =" operation == 'add' ? addTodo() : updateTodo() " >
+                            <!-- c'est btn qui permet d'enregistrer l'opération en cas d'ajout ou  d'update  sinn rien afficher-->
+                           {{ operation =='add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : ''}}
+                           </button>
+                          
+                      </form>
+                </div>
+
+                       <div *ngIf = "operation == 'remove'"> 
+                              <p class="card-title">
+                                  Title : {{selectedTodo.title}}
+                              </p>
+                              <p> 
+                                  Voulez vous supprimer cette tâche ?
+                              </p>
+                              <button class="btn btn-success" [disabled]="!selectedTodo.title" (click)="deleteTodo()">Confirmer</button>    
+                      </div>
+
+              </div>
+        <div class="card-footer">
+         
+        </div>
+    </div>
+ </div>
+ </div>
+</div>
+
